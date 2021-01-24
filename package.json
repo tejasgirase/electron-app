@@ -1,0 +1,41 @@
+{
+  "name": "electron-app",
+  "version": "1.8.0",
+  "description": "Electron application  with auto-update functionality",
+  "author": "tejas.girase",
+  "main": "main.js",
+  "private": true,
+  "devDependencies": {
+    "electron": "^11.0.3",
+    "electron-builder": "^22.9.1"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "publish": "SET GH_TOKEN=YOUR_TOKEN && electron-builder --win --x64 --p always",
+    "pack:win": "electron-packager ."
+  },
+  "dependencies": {
+    "electron-log": "^4.3.0",
+    "electron-updater": "^4.3.5"
+  },
+  "build": {
+    "appId": "app.my.electron.app",
+    "productName": "electron-app",
+    "directories": {
+      "output": "dist"
+    },
+    "publish": {
+      "provider": "github"
+    },
+    "protocols":{
+      "name":"electron-app",
+      "schemes":[
+        "electronApp"
+      ]
+    },
+    "win": {
+      "verifyUpdateCodeSignature": false
+    }
+  }
+}
